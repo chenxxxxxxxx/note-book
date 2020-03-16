@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>抽象工厂模式 | Mrcode 笔记本</title>
+    <meta name="description" content="用来记录工作和学习过程中的笔记，汇总成册方便查阅，类容涵盖各类技术，如：java、git、elasticsearch、mycat、设计模式、gradle、vue - mrcode.cn">
+    <meta name="generator" content="VuePress 1.3.1">
+    
+    
+    <link rel="preload" href="/note-book/assets/css/0.styles.23f41345.css" as="style"><link rel="preload" href="/note-book/assets/js/app.a9634737.js" as="script"><link rel="preload" href="/note-book/assets/js/2.378c0760.js" as="script"><link rel="preload" href="/note-book/assets/js/8.caa20992.js" as="script"><link rel="preload" href="/note-book/assets/js/38.a47a679c.js" as="script"><link rel="prefetch" href="/note-book/assets/js/10.dc95977a.js"><link rel="prefetch" href="/note-book/assets/js/100.20f742a2.js"><link rel="prefetch" href="/note-book/assets/js/101.010fefed.js"><link rel="prefetch" href="/note-book/assets/js/102.3f263d2e.js"><link rel="prefetch" href="/note-book/assets/js/103.7e16ac62.js"><link rel="prefetch" href="/note-book/assets/js/104.3870e7f5.js"><link rel="prefetch" href="/note-book/assets/js/105.d16c1b8c.js"><link rel="prefetch" href="/note-book/assets/js/106.59233646.js"><link rel="prefetch" href="/note-book/assets/js/107.6ccd75bb.js"><link rel="prefetch" href="/note-book/assets/js/108.789e93ec.js"><link rel="prefetch" href="/note-book/assets/js/109.e3092902.js"><link rel="prefetch" href="/note-book/assets/js/11.b5f4843e.js"><link rel="prefetch" href="/note-book/assets/js/110.d433c653.js"><link rel="prefetch" href="/note-book/assets/js/111.9a57ab33.js"><link rel="prefetch" href="/note-book/assets/js/112.c3d99df9.js"><link rel="prefetch" href="/note-book/assets/js/113.f8fcbcb1.js"><link rel="prefetch" href="/note-book/assets/js/114.ee56ae40.js"><link rel="prefetch" href="/note-book/assets/js/115.69891e82.js"><link rel="prefetch" href="/note-book/assets/js/116.40fd4dc7.js"><link rel="prefetch" href="/note-book/assets/js/117.2ab4fcf9.js"><link rel="prefetch" href="/note-book/assets/js/118.c3b1fa72.js"><link rel="prefetch" href="/note-book/assets/js/119.08cebaf4.js"><link rel="prefetch" href="/note-book/assets/js/12.1c5b74d9.js"><link rel="prefetch" href="/note-book/assets/js/120.66c72f91.js"><link rel="prefetch" href="/note-book/assets/js/121.7052690b.js"><link rel="prefetch" href="/note-book/assets/js/122.5de9c027.js"><link rel="prefetch" href="/note-book/assets/js/123.ffb6a027.js"><link rel="prefetch" href="/note-book/assets/js/124.8da1c0f1.js"><link rel="prefetch" href="/note-book/assets/js/125.64946f4f.js"><link rel="prefetch" href="/note-book/assets/js/126.843fff8b.js"><link rel="prefetch" href="/note-book/assets/js/127.4badfbdd.js"><link rel="prefetch" href="/note-book/assets/js/128.8776d6f0.js"><link rel="prefetch" href="/note-book/assets/js/129.62aedd9d.js"><link rel="prefetch" href="/note-book/assets/js/13.a7ee90a8.js"><link rel="prefetch" href="/note-book/assets/js/130.9dd42e3f.js"><link rel="prefetch" href="/note-book/assets/js/131.792c0d3b.js"><link rel="prefetch" href="/note-book/assets/js/132.7a0eda78.js"><link rel="prefetch" href="/note-book/assets/js/133.b4d93611.js"><link rel="prefetch" href="/note-book/assets/js/134.d278aaa8.js"><link rel="prefetch" href="/note-book/assets/js/135.e9445ab7.js"><link rel="prefetch" href="/note-book/assets/js/136.21925196.js"><link rel="prefetch" href="/note-book/assets/js/137.d7c5e771.js"><link rel="prefetch" href="/note-book/assets/js/138.a20cbe0f.js"><link rel="prefetch" href="/note-book/assets/js/139.c30c79f2.js"><link rel="prefetch" href="/note-book/assets/js/14.9ef245a1.js"><link rel="prefetch" href="/note-book/assets/js/140.67bb126d.js"><link rel="prefetch" href="/note-book/assets/js/141.5c4bdab7.js"><link rel="prefetch" href="/note-book/assets/js/142.2e1cb51d.js"><link rel="prefetch" href="/note-book/assets/js/143.5347b79e.js"><link rel="prefetch" href="/note-book/assets/js/144.56e9a934.js"><link rel="prefetch" href="/note-book/assets/js/145.6e75dd76.js"><link rel="prefetch" href="/note-book/assets/js/146.5222afb7.js"><link rel="prefetch" href="/note-book/assets/js/147.953c5319.js"><link rel="prefetch" href="/note-book/assets/js/148.b5c3cdd9.js"><link rel="prefetch" href="/note-book/assets/js/149.24866eb3.js"><link rel="prefetch" href="/note-book/assets/js/15.e9d013b9.js"><link rel="prefetch" href="/note-book/assets/js/150.77e03012.js"><link rel="prefetch" href="/note-book/assets/js/151.1874b351.js"><link rel="prefetch" href="/note-book/assets/js/152.d6320680.js"><link rel="prefetch" href="/note-book/assets/js/153.9a57c0d2.js"><link rel="prefetch" href="/note-book/assets/js/154.199f92b0.js"><link rel="prefetch" href="/note-book/assets/js/155.1d0c6707.js"><link rel="prefetch" href="/note-book/assets/js/156.1b4ab9b1.js"><link rel="prefetch" href="/note-book/assets/js/157.f9ed2faa.js"><link rel="prefetch" href="/note-book/assets/js/158.43a69f1e.js"><link rel="prefetch" href="/note-book/assets/js/159.781a93dd.js"><link rel="prefetch" href="/note-book/assets/js/16.d8b07c16.js"><link rel="prefetch" href="/note-book/assets/js/160.b982e27d.js"><link rel="prefetch" href="/note-book/assets/js/161.6d361c3a.js"><link rel="prefetch" href="/note-book/assets/js/162.aabc5c24.js"><link rel="prefetch" href="/note-book/assets/js/163.e5536955.js"><link rel="prefetch" href="/note-book/assets/js/164.2c45d03b.js"><link rel="prefetch" href="/note-book/assets/js/165.a910dcc2.js"><link rel="prefetch" href="/note-book/assets/js/166.23d103d4.js"><link rel="prefetch" href="/note-book/assets/js/167.db83a04e.js"><link rel="prefetch" href="/note-book/assets/js/168.7dbd2310.js"><link rel="prefetch" href="/note-book/assets/js/169.5f173c21.js"><link rel="prefetch" href="/note-book/assets/js/17.8607992f.js"><link rel="prefetch" href="/note-book/assets/js/170.0abb9b3e.js"><link rel="prefetch" href="/note-book/assets/js/171.3d8c8146.js"><link rel="prefetch" href="/note-book/assets/js/172.0415b166.js"><link rel="prefetch" href="/note-book/assets/js/173.f59436fc.js"><link rel="prefetch" href="/note-book/assets/js/174.e248613e.js"><link rel="prefetch" href="/note-book/assets/js/175.68007105.js"><link rel="prefetch" href="/note-book/assets/js/176.3ff3aaa0.js"><link rel="prefetch" href="/note-book/assets/js/177.e03148e8.js"><link rel="prefetch" href="/note-book/assets/js/178.af38cdfd.js"><link rel="prefetch" href="/note-book/assets/js/179.1c69926c.js"><link rel="prefetch" href="/note-book/assets/js/18.8ba8ae53.js"><link rel="prefetch" href="/note-book/assets/js/180.943c288f.js"><link rel="prefetch" href="/note-book/assets/js/181.11331ef6.js"><link rel="prefetch" href="/note-book/assets/js/182.7ed5cac1.js"><link rel="prefetch" href="/note-book/assets/js/183.fb52a02b.js"><link rel="prefetch" href="/note-book/assets/js/184.77b8b643.js"><link rel="prefetch" href="/note-book/assets/js/185.a96e31e2.js"><link rel="prefetch" href="/note-book/assets/js/186.130e867c.js"><link rel="prefetch" href="/note-book/assets/js/187.6416f408.js"><link rel="prefetch" href="/note-book/assets/js/188.d0133f51.js"><link rel="prefetch" href="/note-book/assets/js/189.41aa7364.js"><link rel="prefetch" href="/note-book/assets/js/19.442d507c.js"><link rel="prefetch" href="/note-book/assets/js/190.e8e32f95.js"><link rel="prefetch" href="/note-book/assets/js/191.670cf449.js"><link rel="prefetch" href="/note-book/assets/js/192.fe7affda.js"><link rel="prefetch" href="/note-book/assets/js/193.a9152d0b.js"><link rel="prefetch" href="/note-book/assets/js/194.4bff5b0c.js"><link rel="prefetch" href="/note-book/assets/js/195.6a28ebdd.js"><link rel="prefetch" href="/note-book/assets/js/196.ab10d251.js"><link rel="prefetch" href="/note-book/assets/js/197.78f54510.js"><link rel="prefetch" href="/note-book/assets/js/198.ef7da568.js"><link rel="prefetch" href="/note-book/assets/js/199.6c2ee73b.js"><link rel="prefetch" href="/note-book/assets/js/20.91dddbbd.js"><link rel="prefetch" href="/note-book/assets/js/200.8714be6f.js"><link rel="prefetch" href="/note-book/assets/js/201.05090972.js"><link rel="prefetch" href="/note-book/assets/js/202.f44609b9.js"><link rel="prefetch" href="/note-book/assets/js/203.a0f54c48.js"><link rel="prefetch" href="/note-book/assets/js/204.5bd683f5.js"><link rel="prefetch" href="/note-book/assets/js/205.7087de7e.js"><link rel="prefetch" href="/note-book/assets/js/206.578574ff.js"><link rel="prefetch" href="/note-book/assets/js/207.248a5d62.js"><link rel="prefetch" href="/note-book/assets/js/208.beee9001.js"><link rel="prefetch" href="/note-book/assets/js/209.24dfddf0.js"><link rel="prefetch" href="/note-book/assets/js/21.d9c262c8.js"><link rel="prefetch" href="/note-book/assets/js/210.182b8411.js"><link rel="prefetch" href="/note-book/assets/js/211.0932dda4.js"><link rel="prefetch" href="/note-book/assets/js/212.4e04be63.js"><link rel="prefetch" href="/note-book/assets/js/213.1db9d44e.js"><link rel="prefetch" href="/note-book/assets/js/214.c0e69162.js"><link rel="prefetch" href="/note-book/assets/js/215.d458a22a.js"><link rel="prefetch" href="/note-book/assets/js/216.4e445c23.js"><link rel="prefetch" href="/note-book/assets/js/217.ade24bc3.js"><link rel="prefetch" href="/note-book/assets/js/218.b14c5a2d.js"><link rel="prefetch" href="/note-book/assets/js/219.471b88a4.js"><link rel="prefetch" href="/note-book/assets/js/22.944f1905.js"><link rel="prefetch" href="/note-book/assets/js/220.c1687934.js"><link rel="prefetch" href="/note-book/assets/js/221.be97d7da.js"><link rel="prefetch" href="/note-book/assets/js/222.304f351d.js"><link rel="prefetch" href="/note-book/assets/js/223.1d3b8eb4.js"><link rel="prefetch" href="/note-book/assets/js/224.8968357c.js"><link rel="prefetch" href="/note-book/assets/js/225.d919d9ed.js"><link rel="prefetch" href="/note-book/assets/js/226.56dba1c0.js"><link rel="prefetch" href="/note-book/assets/js/227.a54bb89a.js"><link rel="prefetch" href="/note-book/assets/js/228.2c68a60f.js"><link rel="prefetch" href="/note-book/assets/js/229.53e1ab2e.js"><link rel="prefetch" href="/note-book/assets/js/23.96590ce7.js"><link rel="prefetch" href="/note-book/assets/js/230.5305e097.js"><link rel="prefetch" href="/note-book/assets/js/231.64c4da2d.js"><link rel="prefetch" href="/note-book/assets/js/232.3834bdaa.js"><link rel="prefetch" href="/note-book/assets/js/233.eaea9087.js"><link rel="prefetch" href="/note-book/assets/js/234.a11d4daf.js"><link rel="prefetch" href="/note-book/assets/js/235.a6829cfb.js"><link rel="prefetch" href="/note-book/assets/js/236.4926b3b1.js"><link rel="prefetch" href="/note-book/assets/js/237.016a15f9.js"><link rel="prefetch" href="/note-book/assets/js/238.3215d13d.js"><link rel="prefetch" href="/note-book/assets/js/239.087941e1.js"><link rel="prefetch" href="/note-book/assets/js/24.41c5cc75.js"><link rel="prefetch" href="/note-book/assets/js/240.4fe8fa49.js"><link rel="prefetch" href="/note-book/assets/js/241.240719f2.js"><link rel="prefetch" href="/note-book/assets/js/242.a0599ef7.js"><link rel="prefetch" href="/note-book/assets/js/243.ae454f6a.js"><link rel="prefetch" href="/note-book/assets/js/244.de6c8f56.js"><link rel="prefetch" href="/note-book/assets/js/245.7337d9f3.js"><link rel="prefetch" href="/note-book/assets/js/246.1c2a53d9.js"><link rel="prefetch" href="/note-book/assets/js/247.9a177ff0.js"><link rel="prefetch" href="/note-book/assets/js/248.e9f36148.js"><link rel="prefetch" href="/note-book/assets/js/249.776bfe0e.js"><link rel="prefetch" href="/note-book/assets/js/25.79f32903.js"><link rel="prefetch" href="/note-book/assets/js/250.e4025ded.js"><link rel="prefetch" href="/note-book/assets/js/251.9e2436d5.js"><link rel="prefetch" href="/note-book/assets/js/252.9bfd9298.js"><link rel="prefetch" href="/note-book/assets/js/253.bcaca719.js"><link rel="prefetch" href="/note-book/assets/js/254.14c67096.js"><link rel="prefetch" href="/note-book/assets/js/255.5acf0189.js"><link rel="prefetch" href="/note-book/assets/js/256.f81d787a.js"><link rel="prefetch" href="/note-book/assets/js/257.998491ed.js"><link rel="prefetch" href="/note-book/assets/js/258.bfc6910a.js"><link rel="prefetch" href="/note-book/assets/js/259.22e2d04d.js"><link rel="prefetch" href="/note-book/assets/js/26.f903267f.js"><link rel="prefetch" href="/note-book/assets/js/260.76d16aa1.js"><link rel="prefetch" href="/note-book/assets/js/261.f87de792.js"><link rel="prefetch" href="/note-book/assets/js/262.6b531e1d.js"><link rel="prefetch" href="/note-book/assets/js/263.0a06e5b9.js"><link rel="prefetch" href="/note-book/assets/js/264.0c47404f.js"><link rel="prefetch" href="/note-book/assets/js/265.ce180e6a.js"><link rel="prefetch" href="/note-book/assets/js/266.a15dbdb9.js"><link rel="prefetch" href="/note-book/assets/js/267.2ee87fc1.js"><link rel="prefetch" href="/note-book/assets/js/268.b1213390.js"><link rel="prefetch" href="/note-book/assets/js/269.1ac79cdb.js"><link rel="prefetch" href="/note-book/assets/js/27.05b4b089.js"><link rel="prefetch" href="/note-book/assets/js/270.b8990a84.js"><link rel="prefetch" href="/note-book/assets/js/271.e23fee5c.js"><link rel="prefetch" href="/note-book/assets/js/272.1411e7f1.js"><link rel="prefetch" href="/note-book/assets/js/273.8781843e.js"><link rel="prefetch" href="/note-book/assets/js/274.8722587d.js"><link rel="prefetch" href="/note-book/assets/js/275.a18c36ae.js"><link rel="prefetch" href="/note-book/assets/js/276.89f30f77.js"><link rel="prefetch" href="/note-book/assets/js/277.037e3334.js"><link rel="prefetch" href="/note-book/assets/js/278.6c0f5843.js"><link rel="prefetch" href="/note-book/assets/js/279.8c264068.js"><link rel="prefetch" href="/note-book/assets/js/28.2752e326.js"><link rel="prefetch" href="/note-book/assets/js/280.c23e767f.js"><link rel="prefetch" href="/note-book/assets/js/281.b0fc4175.js"><link rel="prefetch" href="/note-book/assets/js/282.2ddf3307.js"><link rel="prefetch" href="/note-book/assets/js/283.df1f3cc5.js"><link rel="prefetch" href="/note-book/assets/js/284.2b09ff14.js"><link rel="prefetch" href="/note-book/assets/js/285.072ccca4.js"><link rel="prefetch" href="/note-book/assets/js/286.c1df9a39.js"><link rel="prefetch" href="/note-book/assets/js/287.d0562e2b.js"><link rel="prefetch" href="/note-book/assets/js/288.31648aee.js"><link rel="prefetch" href="/note-book/assets/js/289.d533d258.js"><link rel="prefetch" href="/note-book/assets/js/29.a3b1dcb1.js"><link rel="prefetch" href="/note-book/assets/js/290.61a6c041.js"><link rel="prefetch" href="/note-book/assets/js/291.64b16152.js"><link rel="prefetch" href="/note-book/assets/js/292.c78f57e4.js"><link rel="prefetch" href="/note-book/assets/js/293.8b526037.js"><link rel="prefetch" href="/note-book/assets/js/294.d528d78e.js"><link rel="prefetch" href="/note-book/assets/js/295.fa213366.js"><link rel="prefetch" href="/note-book/assets/js/296.accc8a70.js"><link rel="prefetch" href="/note-book/assets/js/297.aebd87ff.js"><link rel="prefetch" href="/note-book/assets/js/298.528f5c99.js"><link rel="prefetch" href="/note-book/assets/js/299.6d535128.js"><link rel="prefetch" href="/note-book/assets/js/3.95d2e9f7.js"><link rel="prefetch" href="/note-book/assets/js/30.6a0f7236.js"><link rel="prefetch" href="/note-book/assets/js/300.c1565a0a.js"><link rel="prefetch" href="/note-book/assets/js/301.2b0c11b8.js"><link rel="prefetch" href="/note-book/assets/js/302.3ee2a58c.js"><link rel="prefetch" href="/note-book/assets/js/303.d4b66891.js"><link rel="prefetch" href="/note-book/assets/js/304.66417f4d.js"><link rel="prefetch" href="/note-book/assets/js/305.501bbd7e.js"><link rel="prefetch" href="/note-book/assets/js/306.f8205b4b.js"><link rel="prefetch" href="/note-book/assets/js/307.00124269.js"><link rel="prefetch" href="/note-book/assets/js/308.847777e5.js"><link rel="prefetch" href="/note-book/assets/js/309.240d534c.js"><link rel="prefetch" href="/note-book/assets/js/31.b40f76df.js"><link rel="prefetch" href="/note-book/assets/js/310.a10e69d8.js"><link rel="prefetch" href="/note-book/assets/js/311.4ccf6894.js"><link rel="prefetch" href="/note-book/assets/js/312.2dad5271.js"><link rel="prefetch" href="/note-book/assets/js/313.b1c110dd.js"><link rel="prefetch" href="/note-book/assets/js/314.b91ab513.js"><link rel="prefetch" href="/note-book/assets/js/315.257f36c4.js"><link rel="prefetch" href="/note-book/assets/js/316.cbbe9e53.js"><link rel="prefetch" href="/note-book/assets/js/317.bdedc320.js"><link rel="prefetch" href="/note-book/assets/js/318.e193fe81.js"><link rel="prefetch" href="/note-book/assets/js/319.85894e1f.js"><link rel="prefetch" href="/note-book/assets/js/32.c1bfd11f.js"><link rel="prefetch" href="/note-book/assets/js/320.b05dde94.js"><link rel="prefetch" href="/note-book/assets/js/321.f0978070.js"><link rel="prefetch" href="/note-book/assets/js/322.a27108e3.js"><link rel="prefetch" href="/note-book/assets/js/323.aab95f6d.js"><link rel="prefetch" href="/note-book/assets/js/324.78fa6d27.js"><link rel="prefetch" href="/note-book/assets/js/325.115f2125.js"><link rel="prefetch" href="/note-book/assets/js/326.bfaf65e8.js"><link rel="prefetch" href="/note-book/assets/js/327.89444db0.js"><link rel="prefetch" href="/note-book/assets/js/328.cacaa33e.js"><link rel="prefetch" href="/note-book/assets/js/329.fd604e70.js"><link rel="prefetch" href="/note-book/assets/js/33.9a1c25b9.js"><link rel="prefetch" href="/note-book/assets/js/330.e10c518d.js"><link rel="prefetch" href="/note-book/assets/js/331.16e3ba62.js"><link rel="prefetch" href="/note-book/assets/js/332.720ada60.js"><link rel="prefetch" href="/note-book/assets/js/333.abc80a64.js"><link rel="prefetch" href="/note-book/assets/js/334.ce0e99e5.js"><link rel="prefetch" href="/note-book/assets/js/335.ea1fd564.js"><link rel="prefetch" href="/note-book/assets/js/336.a0ef3f01.js"><link rel="prefetch" href="/note-book/assets/js/337.88c36770.js"><link rel="prefetch" href="/note-book/assets/js/338.6bc8098c.js"><link rel="prefetch" href="/note-book/assets/js/339.d9884112.js"><link rel="prefetch" href="/note-book/assets/js/34.5c67c2fb.js"><link rel="prefetch" href="/note-book/assets/js/340.5a5fc570.js"><link rel="prefetch" href="/note-book/assets/js/341.b0a99936.js"><link rel="prefetch" href="/note-book/assets/js/342.6962ce50.js"><link rel="prefetch" href="/note-book/assets/js/343.a071c4c5.js"><link rel="prefetch" href="/note-book/assets/js/344.56196436.js"><link rel="prefetch" href="/note-book/assets/js/345.eb874331.js"><link rel="prefetch" href="/note-book/assets/js/346.d904b338.js"><link rel="prefetch" href="/note-book/assets/js/347.6c19e495.js"><link rel="prefetch" href="/note-book/assets/js/348.426c6b1e.js"><link rel="prefetch" href="/note-book/assets/js/349.22e11267.js"><link rel="prefetch" href="/note-book/assets/js/35.af8ad70a.js"><link rel="prefetch" href="/note-book/assets/js/350.449188b4.js"><link rel="prefetch" href="/note-book/assets/js/351.607217a4.js"><link rel="prefetch" href="/note-book/assets/js/352.032dff73.js"><link rel="prefetch" href="/note-book/assets/js/353.614f6d69.js"><link rel="prefetch" href="/note-book/assets/js/354.e837d541.js"><link rel="prefetch" href="/note-book/assets/js/355.8b8171c7.js"><link rel="prefetch" href="/note-book/assets/js/356.644cae2f.js"><link rel="prefetch" href="/note-book/assets/js/357.e461e6ab.js"><link rel="prefetch" href="/note-book/assets/js/358.869d633f.js"><link rel="prefetch" href="/note-book/assets/js/359.7239547c.js"><link rel="prefetch" href="/note-book/assets/js/36.b57549c3.js"><link rel="prefetch" href="/note-book/assets/js/360.7aaa1caf.js"><link rel="prefetch" href="/note-book/assets/js/361.4b49869d.js"><link rel="prefetch" href="/note-book/assets/js/362.7a0826b5.js"><link rel="prefetch" href="/note-book/assets/js/363.0a9b2079.js"><link rel="prefetch" href="/note-book/assets/js/364.8ef7861c.js"><link rel="prefetch" href="/note-book/assets/js/365.1ea90043.js"><link rel="prefetch" href="/note-book/assets/js/366.b1a825a0.js"><link rel="prefetch" href="/note-book/assets/js/367.f0093681.js"><link rel="prefetch" href="/note-book/assets/js/368.0663ce89.js"><link rel="prefetch" href="/note-book/assets/js/369.2e462fcc.js"><link rel="prefetch" href="/note-book/assets/js/37.9677b230.js"><link rel="prefetch" href="/note-book/assets/js/370.73f033ff.js"><link rel="prefetch" href="/note-book/assets/js/371.f93b9332.js"><link rel="prefetch" href="/note-book/assets/js/372.fbedf5eb.js"><link rel="prefetch" href="/note-book/assets/js/373.4773cf52.js"><link rel="prefetch" href="/note-book/assets/js/374.da13c698.js"><link rel="prefetch" href="/note-book/assets/js/375.d4b0f668.js"><link rel="prefetch" href="/note-book/assets/js/376.29588439.js"><link rel="prefetch" href="/note-book/assets/js/377.1e9d6e02.js"><link rel="prefetch" href="/note-book/assets/js/378.9579c600.js"><link rel="prefetch" href="/note-book/assets/js/379.6db37dc5.js"><link rel="prefetch" href="/note-book/assets/js/380.4a57189f.js"><link rel="prefetch" href="/note-book/assets/js/381.52c0d620.js"><link rel="prefetch" href="/note-book/assets/js/382.b3808fde.js"><link rel="prefetch" href="/note-book/assets/js/383.329521bb.js"><link rel="prefetch" href="/note-book/assets/js/384.c1645ea1.js"><link rel="prefetch" href="/note-book/assets/js/385.758f45ff.js"><link rel="prefetch" href="/note-book/assets/js/386.66b0088c.js"><link rel="prefetch" href="/note-book/assets/js/387.3aee23e4.js"><link rel="prefetch" href="/note-book/assets/js/388.2214f16c.js"><link rel="prefetch" href="/note-book/assets/js/389.919a0002.js"><link rel="prefetch" href="/note-book/assets/js/39.c1da4376.js"><link rel="prefetch" href="/note-book/assets/js/390.9dcddfa8.js"><link rel="prefetch" href="/note-book/assets/js/391.c6e69790.js"><link rel="prefetch" href="/note-book/assets/js/392.920a4f11.js"><link rel="prefetch" href="/note-book/assets/js/393.b512bcad.js"><link rel="prefetch" href="/note-book/assets/js/394.0a588af1.js"><link rel="prefetch" href="/note-book/assets/js/395.6c9749b9.js"><link rel="prefetch" href="/note-book/assets/js/396.a40c56b3.js"><link rel="prefetch" href="/note-book/assets/js/397.c917bf28.js"><link rel="prefetch" href="/note-book/assets/js/398.235c8ad7.js"><link rel="prefetch" href="/note-book/assets/js/399.255e3ac9.js"><link rel="prefetch" href="/note-book/assets/js/4.f0c05bd5.js"><link rel="prefetch" href="/note-book/assets/js/40.d941a1e6.js"><link rel="prefetch" href="/note-book/assets/js/400.eaaf1643.js"><link rel="prefetch" href="/note-book/assets/js/401.ecf9ea37.js"><link rel="prefetch" href="/note-book/assets/js/402.2a0a97dd.js"><link rel="prefetch" href="/note-book/assets/js/403.a9bbf25f.js"><link rel="prefetch" href="/note-book/assets/js/404.b90edf4e.js"><link rel="prefetch" href="/note-book/assets/js/405.e305908c.js"><link rel="prefetch" href="/note-book/assets/js/406.683a2e10.js"><link rel="prefetch" href="/note-book/assets/js/407.a33ebc29.js"><link rel="prefetch" href="/note-book/assets/js/408.6918fc17.js"><link rel="prefetch" href="/note-book/assets/js/409.778d01fe.js"><link rel="prefetch" href="/note-book/assets/js/41.6702bb1c.js"><link rel="prefetch" href="/note-book/assets/js/410.50d91346.js"><link rel="prefetch" href="/note-book/assets/js/411.20f79e5a.js"><link rel="prefetch" href="/note-book/assets/js/412.0d6e9728.js"><link rel="prefetch" href="/note-book/assets/js/413.2d1da875.js"><link rel="prefetch" href="/note-book/assets/js/414.3ffb71db.js"><link rel="prefetch" href="/note-book/assets/js/415.8ccf6768.js"><link rel="prefetch" href="/note-book/assets/js/416.bd1fdf79.js"><link rel="prefetch" href="/note-book/assets/js/417.eec2cbfd.js"><link rel="prefetch" href="/note-book/assets/js/418.d6b02158.js"><link rel="prefetch" href="/note-book/assets/js/419.31080afd.js"><link rel="prefetch" href="/note-book/assets/js/42.12eb5ff3.js"><link rel="prefetch" href="/note-book/assets/js/420.9871ceea.js"><link rel="prefetch" href="/note-book/assets/js/421.dbf291c8.js"><link rel="prefetch" href="/note-book/assets/js/422.9dd68ac4.js"><link rel="prefetch" href="/note-book/assets/js/423.fe7f1331.js"><link rel="prefetch" href="/note-book/assets/js/424.a09e46b0.js"><link rel="prefetch" href="/note-book/assets/js/425.bb903361.js"><link rel="prefetch" href="/note-book/assets/js/426.776f2f2a.js"><link rel="prefetch" href="/note-book/assets/js/427.4ebbdccd.js"><link rel="prefetch" href="/note-book/assets/js/428.d20cdf3c.js"><link rel="prefetch" href="/note-book/assets/js/429.4ac7dd0e.js"><link rel="prefetch" href="/note-book/assets/js/43.35eacbbb.js"><link rel="prefetch" href="/note-book/assets/js/44.401a0bbe.js"><link rel="prefetch" href="/note-book/assets/js/45.6f63322d.js"><link rel="prefetch" href="/note-book/assets/js/46.2dc4e30c.js"><link rel="prefetch" href="/note-book/assets/js/47.7b8b8d2c.js"><link rel="prefetch" href="/note-book/assets/js/48.1e206c34.js"><link rel="prefetch" href="/note-book/assets/js/49.7cdb051e.js"><link rel="prefetch" href="/note-book/assets/js/5.2f3a8017.js"><link rel="prefetch" href="/note-book/assets/js/50.250870f0.js"><link rel="prefetch" href="/note-book/assets/js/51.2b2d4788.js"><link rel="prefetch" href="/note-book/assets/js/52.c0020712.js"><link rel="prefetch" href="/note-book/assets/js/53.27a60f38.js"><link rel="prefetch" href="/note-book/assets/js/54.a034011a.js"><link rel="prefetch" href="/note-book/assets/js/55.fb9b4780.js"><link rel="prefetch" href="/note-book/assets/js/56.8aa79351.js"><link rel="prefetch" href="/note-book/assets/js/57.959399b8.js"><link rel="prefetch" href="/note-book/assets/js/58.5c9d26b3.js"><link rel="prefetch" href="/note-book/assets/js/59.ad2419eb.js"><link rel="prefetch" href="/note-book/assets/js/6.8e95bc4d.js"><link rel="prefetch" href="/note-book/assets/js/60.02f66510.js"><link rel="prefetch" href="/note-book/assets/js/61.e4ee3283.js"><link rel="prefetch" href="/note-book/assets/js/62.1d782fc7.js"><link rel="prefetch" href="/note-book/assets/js/63.ea85e28f.js"><link rel="prefetch" href="/note-book/assets/js/64.be835b51.js"><link rel="prefetch" href="/note-book/assets/js/65.f8a676c8.js"><link rel="prefetch" href="/note-book/assets/js/66.81c50e96.js"><link rel="prefetch" href="/note-book/assets/js/67.a64b12d4.js"><link rel="prefetch" href="/note-book/assets/js/68.7864f544.js"><link rel="prefetch" href="/note-book/assets/js/69.aabf7f02.js"><link rel="prefetch" href="/note-book/assets/js/7.bf1e45bf.js"><link rel="prefetch" href="/note-book/assets/js/70.aab53d99.js"><link rel="prefetch" href="/note-book/assets/js/71.21d443a9.js"><link rel="prefetch" href="/note-book/assets/js/72.9d887861.js"><link rel="prefetch" href="/note-book/assets/js/73.901b0298.js"><link rel="prefetch" href="/note-book/assets/js/74.7a0c287e.js"><link rel="prefetch" href="/note-book/assets/js/75.e7842cd2.js"><link rel="prefetch" href="/note-book/assets/js/76.fc3d8b7b.js"><link rel="prefetch" href="/note-book/assets/js/77.d564b523.js"><link rel="prefetch" href="/note-book/assets/js/78.a59d4274.js"><link rel="prefetch" href="/note-book/assets/js/79.1dbaab71.js"><link rel="prefetch" href="/note-book/assets/js/80.8587ce54.js"><link rel="prefetch" href="/note-book/assets/js/81.1d31c4f9.js"><link rel="prefetch" href="/note-book/assets/js/82.c6592951.js"><link rel="prefetch" href="/note-book/assets/js/83.0c478ba9.js"><link rel="prefetch" href="/note-book/assets/js/84.e006b336.js"><link rel="prefetch" href="/note-book/assets/js/85.e7bfc4e4.js"><link rel="prefetch" href="/note-book/assets/js/86.d91297db.js"><link rel="prefetch" href="/note-book/assets/js/87.e969f99f.js"><link rel="prefetch" href="/note-book/assets/js/88.c4bfb5fb.js"><link rel="prefetch" href="/note-book/assets/js/89.f741562c.js"><link rel="prefetch" href="/note-book/assets/js/9.3494496f.js"><link rel="prefetch" href="/note-book/assets/js/90.b04094c8.js"><link rel="prefetch" href="/note-book/assets/js/91.6ba37854.js"><link rel="prefetch" href="/note-book/assets/js/92.3e997cb1.js"><link rel="prefetch" href="/note-book/assets/js/93.31700b1a.js"><link rel="prefetch" href="/note-book/assets/js/94.b30e3391.js"><link rel="prefetch" href="/note-book/assets/js/95.ae80bfbe.js"><link rel="prefetch" href="/note-book/assets/js/96.2829f0f6.js"><link rel="prefetch" href="/note-book/assets/js/97.269b738f.js"><link rel="prefetch" href="/note-book/assets/js/98.701038f9.js"><link rel="prefetch" href="/note-book/assets/js/99.90983704.js">
+    <link rel="stylesheet" href="/note-book/assets/css/0.styles.23f41345.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/note-book/" class="home-link router-link-active"><!----> <span class="site-name">Mrcode 笔记本</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/note-book/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/imocc/design_pattern/" class="nav-link">
+  设计模式（慕课）
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/design_pattern/" class="nav-link router-link-active">
+  研磨设计模式（李兴华）
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Mycat" class="dropdown-title"><span class="title">Mycat</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/mycat/" class="nav-link">
+  mycat 1
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/mycat2/" class="nav-link">
+  mycat 2
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="elasticsearch" class="dropdown-title"><span class="title">elasticsearch</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/elasticsearch-core/" class="nav-link">
+  核心知识篇
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/elasticsearch-senior/" class="nav-link">
+  高级知识篇
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="spring" class="dropdown-title"><span class="title">spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/spring-cloud-tutorial/" class="nav-link">
+  Spring Cloud
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="亿级流量电商详情页系统实战(缓存架构)" class="dropdown-title"><span class="title">亿级流量电商详情页系统实战(缓存架构)</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/" class="nav-link">
+  全目录导航
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/001-introduce.html" class="nav-link">
+  第一版（001 ~ 123 章）
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/124.html" class="nav-link">
+  第二版（124 ~ 195 章）
+</a></li></ul></div></div><div class="nav-item"><a href="/note-book/_posts/" class="nav-link">
+  博客（零散文章）
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系列学习中" class="dropdown-title"><span class="title">系列学习中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/spring-cloud-tutorial/" class="nav-link">
+  Spring Cloud 官网教程实践笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多笔记" class="dropdown-title"><span class="title">更多笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/introduce/" class="nav-link">
+  本笔记介绍
+</a></li><li class="dropdown-item"><!----> <a href="https://zq99299.github.io/linux-tutorial/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  linux 基础篇
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/zq99299/note-book" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/note-book/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="设计模式" class="dropdown-title"><span class="title">设计模式</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/imocc/design_pattern/" class="nav-link">
+  设计模式（慕课）
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/design_pattern/" class="nav-link router-link-active">
+  研磨设计模式（李兴华）
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="Mycat" class="dropdown-title"><span class="title">Mycat</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/mycat/" class="nav-link">
+  mycat 1
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/mycat2/" class="nav-link">
+  mycat 2
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="elasticsearch" class="dropdown-title"><span class="title">elasticsearch</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/elasticsearch-core/" class="nav-link">
+  核心知识篇
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/elasticsearch-senior/" class="nav-link">
+  高级知识篇
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="spring" class="dropdown-title"><span class="title">spring</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/spring-cloud-tutorial/" class="nav-link">
+  Spring Cloud
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="亿级流量电商详情页系统实战(缓存架构)" class="dropdown-title"><span class="title">亿级流量电商详情页系统实战(缓存架构)</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/" class="nav-link">
+  全目录导航
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/001-introduce.html" class="nav-link">
+  第一版（001 ~ 123 章）
+</a></li><li class="dropdown-item"><!----> <a href="/note-book/cache-pdp/124.html" class="nav-link">
+  第二版（124 ~ 195 章）
+</a></li></ul></div></div><div class="nav-item"><a href="/note-book/_posts/" class="nav-link">
+  博客（零散文章）
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="系列学习中" class="dropdown-title"><span class="title">系列学习中</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/spring-cloud-tutorial/" class="nav-link">
+  Spring Cloud 官网教程实践笔记
+</a></li></ul></div></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="更多笔记" class="dropdown-title"><span class="title">更多笔记</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/note-book/introduce/" class="nav-link">
+  本笔记介绍
+</a></li><li class="dropdown-item"><!----> <a href="https://zq99299.github.io/linux-tutorial/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  linux 基础篇
+  <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></li></ul></div></div> <a href="https://github.com/zq99299/note-book" target="_blank" rel="noopener noreferrer" class="repo-link">
+    GitHub
+    <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></a></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>研磨设计模式（李兴华）</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/note-book/design_pattern/" class="sidebar-link">设计模式有什么？设计模式简介</a></li><li><a href="/note-book/design_pattern/02_how_to_learn/how_to_learn.html" class="sidebar-link">如何学习设计模式</a></li><li><a href="/note-book/design_pattern/03_simple_factory/simple_factory.html" class="sidebar-link">简单工厂</a></li><li><a href="/note-book/design_pattern/04_facade/facade.html" class="sidebar-link">外观模式</a></li><li><a href="/note-book/design_pattern/05_adapter/adapter.html" class="sidebar-link">适配器模式</a></li><li><a href="/note-book/design_pattern/06_singleton/singleton.html" class="sidebar-link">单例设计模式</a></li><li><a href="/note-book/design_pattern/07_factory_method/factory_method.html" class="sidebar-link">工厂方法模式</a></li><li><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html" class="active sidebar-link">抽象工厂模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#初识抽象工厂模式" class="sidebar-link">初识抽象工厂模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#定义" class="sidebar-link">定义</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#结构和说明" class="sidebar-link">结构和说明</a></li></ul></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#体会抽象工厂模式" class="sidebar-link">体会抽象工厂模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#不用模式的解决方案" class="sidebar-link">不用模式的解决方案</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#使用模式的解决方案：" class="sidebar-link">使用模式的解决方案：</a></li></ul></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#理解抽象工厂模式" class="sidebar-link">理解抽象工厂模式</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#认识抽象工厂模式" class="sidebar-link">认识抽象工厂模式</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#定义可扩展的工厂" class="sidebar-link">定义可扩展的工厂</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#抽象工厂和dao" class="sidebar-link">抽象工厂和DAO</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#dao-和抽象工厂的关系" class="sidebar-link">DAO 和抽象工厂的关系</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#dao模式采用工厂方法模式来实现的策略" class="sidebar-link">DAO模式采用工厂方法模式来实现的策略</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#dao-模式采用抽象工厂模式来实现的策略" class="sidebar-link">DAO 模式采用抽象工厂模式来实现的策略</a></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#抽象工厂模式的优缺点" class="sidebar-link">抽象工厂模式的优缺点</a></li></ul></li><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#理解抽象工厂" class="sidebar-link">理解抽象工厂</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/note-book/design_pattern/08_abstract_factory/abstract_factory.html#何时选用抽象工厂模式：" class="sidebar-link">何时选用抽象工厂模式：</a></li></ul></li></ul></li><li><a href="/note-book/design_pattern/09_builder/builder.html" class="sidebar-link">生成器模式</a></li><li><a href="/note-book/design_pattern/10_prototype/prototype.html" class="sidebar-link">原型模式</a></li><li><a href="/note-book/design_pattern/11_mediator/mediator.html" class="sidebar-link">中介者模式</a></li><li><a href="/note-book/design_pattern/12_proxy/proxy.html" class="sidebar-link">代理模式</a></li><li><a href="/note-book/design_pattern/13_observer/observer.html" class="sidebar-link">观察者模式</a></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="抽象工厂模式"><a href="#抽象工厂模式" class="header-anchor">#</a> 抽象工厂模式</h1> <h2 id="初识抽象工厂模式"><a href="#初识抽象工厂模式" class="header-anchor">#</a> 初识抽象工厂模式</h2> <h3 id="定义"><a href="#定义" class="header-anchor">#</a> 定义</h3> <p>提供一个<code>创建一系列相关或相互依赖对象</code>的接口，而无需指定他们具体的类。</p> <h3 id="结构和说明"><a href="#结构和说明" class="header-anchor">#</a> 结构和说明</h3> <p><img src="/note-book/assets/img/1.b8bd8315.jpg" alt=""></p> <ul><li><strong>AbstractFactory：</strong> 抽象工厂，定义创建一系列产品对象的操作接口</li> <li><strong>ConcreteFactory：</strong> 具体的工厂，实现抽象工厂定义的方法，具体实现一系列产品对象的创建</li> <li><strong>AbstractProduct：</strong> 定义一类产品对象的接口</li> <li><strong>ConcreteProduct：</strong> 具体的产品实现对象，通常在具体工厂里面，会选择具体的产品实现对象，来创建符合抽象工厂定义的方法返回的产品类型的对象。</li> <li><strong>Client：</strong> 客户端，主要使用抽象工厂来获取<code>一系列</code>所需要的产品对象，然后面向这些产品对象的接口编程，以实现需要的功能</li></ul> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * 抽象产品A的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AbstractProductA</span> <span class="token punctuation">{</span>
+	<span class="token comment">//定义抽象产品A相关的操作</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 产品A的具体实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProductA1</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractProductA</span> <span class="token punctuation">{</span>
+	<span class="token comment">//实现产品A的接口中定义的操作</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 产品A的具体实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProductA2</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractProductA</span> <span class="token punctuation">{</span>
+	<span class="token comment">//实现产品A的接口中定义的操作</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 抽象产品B的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AbstractProductB</span> <span class="token punctuation">{</span>
+	<span class="token comment">//定义抽象产品B相关的操作</span>
+<span class="token punctuation">}</span><span class="token comment">/**
+ * 产品B的具体实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProductB1</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractProductB</span> <span class="token punctuation">{</span>
+	<span class="token comment">//实现产品B的接口中定义的操作</span>
+<span class="token punctuation">}</span><span class="token comment">/**
+ * 产品B的具体实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ProductB2</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractProductB</span> <span class="token punctuation">{</span>
+	<span class="token comment">//实现产品B的接口中定义的操作</span>
+<span class="token punctuation">}</span><span class="token comment">/**
+ * 抽象工厂的接口，声明创建抽象产品对象的操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AbstractFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示例方法，创建抽象产品A的对象
+	 * @return 抽象产品A的对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductA</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 示例方法，创建抽象产品B的对象
+	 * @return 抽象产品B的对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductB</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token comment">/**
+ * 具体的工厂实现对象，实现创建具体的产品对象的操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteFactory1</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductA</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ProductA1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductB</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ProductB1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token comment">/**
+ * 具体的工厂实现对象，实现创建具体的产品对象的操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ConcreteFactory2</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductA</span> <span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ProductA2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">AbstractProductB</span> <span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ProductB2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//创建抽象工厂对象</span>
+		<span class="token class-name">AbstractFactory</span> af <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcreteFactory1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//通过抽象工厂来获取一系列的对象，如产品A和产品B</span>
+		af<span class="token punctuation">.</span><span class="token function">createProductA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		af<span class="token punctuation">.</span><span class="token function">createProductB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br></div></div><hr> <h2 id="体会抽象工厂模式"><a href="#体会抽象工厂模式" class="header-anchor">#</a> 体会抽象工厂模式</h2> <p><strong>问题：</strong></p> <ol><li><p>选择组装电脑的配件</p> <p>举个生活中常见的例子 ---- 组装电脑：</p> <p>我们在组装电脑的时候，通常需要选择一系列的配件，比如：CP硬盘、内存、主板、电源、机箱等等。为了使讨论简单点，只考虑选择cpu和主板的问题。</p> <p>对于装机工程师而言，他只知道组装一台电脑，需要相应的配件，但是具体使用什么样的配件，还得由客户说了算。也就是说装机工程师只是负责组装，而客户负责选择装配所需要的具体的配件。</p></li> <li><p>问题出来了：</p> <p>现在需要使用程序来把这个装机的过程，尤其是选择组装电脑配件的过程实现出来，该如何实现呢？</p></li></ol> <h3 id="不用模式的解决方案"><a href="#不用模式的解决方案" class="header-anchor">#</a> 不用模式的解决方案</h3> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * CPU的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CPUApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，CPU具有运算的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ *Intel的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IntelCPU</span> <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in Intel CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * AMD的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> AMDCPU <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in AMD CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+<span class="token comment">/**
+ * 主板的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，主板都具有安装CPU的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 微星的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MSIMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in MSIMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 技嘉的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GAMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in GAMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 创建CPU的简单工厂
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CPUFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 创建CPU接口对象的方法
+	 * @param type 选择CPU类型的参数
+	 * @return CPU接口对象的方法
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">CPUApi</span> <span class="token function">createCPUApi</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token class-name">CPUApi</span> cpu <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token comment">//根据参数来选择并创建相应的CPU对象</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			cpu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			cpu <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> cpu<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 创建主板的简单工厂
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MainboardFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 创建主板接口对象的方法
+	 * @param type 选择主板类型的参数
+	 * @return 主板接口对象的方法
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">MainboardApi</span> <span class="token function">createMainboardApi</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token class-name">MainboardApi</span> mainboard <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token comment">//根据参数来选择并创建相应的主板对象</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			mainboard <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			mainboard <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> mainboard<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 装机工程师的类
+ */</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span> <span class="token class-name">ComputerEngineer</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的CPU
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">CPUApi</span> cpu<span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的主板
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">MainboardApi</span> mainboard <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+	<span class="token comment">/**
+	 * 装机过程
+	 * @param cpuType 客户选择所需CPU的类型
+	 * @param mainboardType 客户选择所需主板的类型
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">makeComputer</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuType<span class="token punctuation">,</span><span class="token keyword">int</span> mainboardType<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//1：首先准备好装机所需要的配件</span>
+		<span class="token function">prepareHardwares</span><span class="token punctuation">(</span>cpuType<span class="token punctuation">,</span>mainboardType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2：组装机器</span>
+
+		<span class="token comment">//3：测试机器</span>
+
+		<span class="token comment">//4：交付客户</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">/**
+	 * 准备装机所需要的配件
+	 * @param cpuType 客户选择所需CPU的类型
+	 * @param mainboardType 客户选择所需主板的类型
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">prepareHardwares</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuType<span class="token punctuation">,</span><span class="token keyword">int</span> mainboardType<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//这里要去准备CPU和主板的具体实现，为了示例简单，这里只准备这两个</span>
+		<span class="token comment">//可是，装机工程师并不知道如何去创建，怎么办呢？</span>
+
+		<span class="token comment">//直接找相应的工厂获取</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu <span class="token operator">=</span> <span class="token class-name">CPUFactory</span><span class="token punctuation">.</span><span class="token function">createCPUApi</span><span class="token punctuation">(</span>cpuType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard <span class="token operator">=</span> <span class="token class-name">MainboardFactory</span><span class="token punctuation">.</span><span class="token function">createMainboardApi</span><span class="token punctuation">(</span>mainboardType<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token comment">//测试一下配件是否好用</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu<span class="token punctuation">.</span><span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard<span class="token punctuation">.</span><span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//创建装机工程师对象</span>
+		<span class="token class-name">ComputerEngineer</span> engineer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComputerEngineer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//告诉装机工程师自己选择的配件，让装机工程师组装电脑</span>
+		engineer<span class="token punctuation">.</span><span class="token function">makeComputer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br></div></div><p><strong>存在的问题：</strong></p> <p>告诉装机工程师自己选择的配件，让装机工程师组装电脑</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code>engineer<span class="token punctuation">.</span><span class="token function">makeComputer</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br></div></div><p>从客户端调用来看，如果我不清楚，这些代表的是什么。很容易传入错误的类型，那么 cpu 和主板就不匹配</p> <p>虽然上面的实现，通过简单工厂解决了这个事情：对于装机工程师，只知道cpu和主板的接口，而不知道具体的实现的问题，</p> <p>但还有一个问题没有解决，什么问题呢？那就是这些 cpu 对象和主板对象其实是有关系的，是需要相互匹配的。</p> <h3 id="使用模式的解决方案："><a href="#使用模式的解决方案：" class="header-anchor">#</a> 使用模式的解决方案：</h3> <p>先来看看使用模式的思路：</p> <ol><li><p>装机工程师要组装电脑对象，需要一系列的产品对象，比如CPU、主板等，于是创建一个抽象工厂给装机工程师使用，在这个抽象工厂里面定义抽象的创建 cpu 和主板的方法，这个抽象工厂就相当于一个抽象的装机方案，在 装机方案里面，各个配件是能够相互匹配的。</p></li> <li><p>每个装机的客户，会提出他们自己的具体装机方案，或则是选择已有的装机方案，相当于为抽象工厂提供了具体的子类，在这些具体的装机方案类里面，会创建具体的 cpu 和主板实现对象。</p></li></ol> <p><img src="/note-book/assets/img/2.23904cf5.jpg" alt=""></p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * CPU的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CPUApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，CPU具有运算的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * AMD的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> AMDCPU <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in AMD CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ *Intel的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IntelCPU</span> <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in Intel CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 主板的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，主板都具有安装CPU的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 微星的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MSIMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in MSIMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 技嘉的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GAMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in GAMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">/**
+ * 抽象工厂的接口，声明创建抽象产品对象的操作
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AbstractFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 创建CPU的对象
+	 * @return CPU的对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">CPUApi</span> <span class="token function">createCPUApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 创建主板的对象
+	 * @return 主板的对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">MainboardApi</span> <span class="token function">createMainboardApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机方案一：Intel 的CPU + 技嘉的主板
+ * 这里创建CPU和主板对象的时候，是对应的，能匹配上的
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Schema1</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">CPUApi</span> <span class="token function">createCPUApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">MainboardApi</span> <span class="token function">createMainboardApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机方案二：AMD的CPU + 微星的主板
+ * 这里创建CPU和主板对象的时候，是对应的，能匹配上的
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Schema2</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">CPUApi</span> <span class="token function">createCPUApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">MainboardApi</span> <span class="token function">createMainboardApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机工程师的类
+ */</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span> <span class="token class-name">ComputerEngineer</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的CPU
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">CPUApi</span> cpu<span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的主板
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">MainboardApi</span> mainboard <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+	<span class="token comment">/**
+	 * 装机过程
+	 * @param schema 客户选择的装机方案
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">makeComputer</span><span class="token punctuation">(</span><span class="token class-name">AbstractFactory</span> schema<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//1：首先准备好装机所需要的配件</span>
+		<span class="token function">prepareHardwares</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2：组装机器</span>
+
+		<span class="token comment">//3：测试机器</span>
+
+		<span class="token comment">//4：交付客户</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">/**
+	 * 准备装机所需要的配件
+	 * @param schema 客户选择的装机方案
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">prepareHardwares</span><span class="token punctuation">(</span><span class="token class-name">AbstractFactory</span> schema<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//这里要去准备CPU和主板的具体实现，为了示例简单，这里只准备这两个</span>
+		<span class="token comment">//可是，装机工程师并不知道如何去创建，怎么办呢？</span>
+
+		<span class="token comment">//使用抽象工厂来获取相应的接口对象</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu <span class="token operator">=</span> schema<span class="token punctuation">.</span><span class="token function">createCPUApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard <span class="token operator">=</span> schema<span class="token punctuation">.</span><span class="token function">createMainboardApi</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token comment">//测试一下配件是否好用</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu<span class="token punctuation">.</span><span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard<span class="token punctuation">.</span><span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//创建装机工程师对象</span>
+		<span class="token class-name">ComputerEngineer</span> engineer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComputerEngineer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//客户选择并创建需要使用的装机方案对象</span>
+		<span class="token class-name">AbstractFactory</span> schema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//告诉装机工程师自己选择的装机方案，让装机工程师组装电脑</span>
+		engineer<span class="token punctuation">.</span><span class="token function">makeComputer</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br></div></div><p>很明显的，客户端使用的时候，是一套一套的选择，就解决了上面乱选不匹配的问题出现。</p> <hr> <h2 id="理解抽象工厂模式"><a href="#理解抽象工厂模式" class="header-anchor">#</a> 理解抽象工厂模式</h2> <h3 id="认识抽象工厂模式"><a href="#认识抽象工厂模式" class="header-anchor">#</a> 认识抽象工厂模式</h3> <ol><li><p>模式的功能</p> <p>抽象工厂的功能是为<code>一系列相关对象</code>或<code>相互依赖的对象</code>创建一个接口。</p> <p>从某种意义上看，抽象工厂其实是一个产品系列，或则是产品簇</p></li> <li><p>实现成接口</p> <p>AbstractFactory 在 java 中<code>通常实现为接口</code>，大家不要被名称误导了，以为是实现成为抽象类</p></li> <li><p>使用工厂方法</p></li></ol> <p>AbstractFactory 定义了创建产品所需要的接口，具体的实现是在<code>实现类里面</code>，通常在实现类里面就需要<code>选择多种</code>更具体的实现，所以 AbstractFactory 定义的<code>创建产品的方法</code>可以看成<code>是工厂方法</code>，而这些工厂方法的<code>具体实现</code>就<code>延迟</code>到了具体的工厂里面。也就是说使用工厂方法来实现抽象工厂。
+4. 切换产品簇</p> <p>抽象工厂定义了一个产品簇，因此切换产品簇的时候提供不同的抽象工厂就好了</p> <ol start="5"><li>抽象工厂模式的调用顺序示意图</li></ol> <p><img src="/note-book/assets/img/3.5c212f56.jpg" alt=""></p> <h3 id="定义可扩展的工厂"><a href="#定义可扩展的工厂" class="header-anchor">#</a> 定义可扩展的工厂</h3> <p>在前面的实例中，抽象工厂为每一种它能创建的产品对象都定义了相应的方法，比如创建 cpu 的方法和创建主板的方法等。</p> <p><code>这种实现有一个麻烦</code>，就是如果在产品簇中要<code>增加一种产品</code>，比如现在要求抽象工厂除了能够创建 cpu 和主板外，还要能够创建内存对象，那么就需要在抽象工厂里面添加创建内存的这么一个方法。当<code>抽象工厂一发生变化</code>，<code>所有</code>的具体工厂<code>实现</code>都要<code>发生变化</code>，这非常的不灵活</p> <p>现在有一种相对灵活，但是不太安全的改进方式来解决这个问题，思路如下：</p> <p><code>抽象工厂</code>里面不需要定义那么多方法，<code>定义一个方法</code>就可以了，给这个方法<code>设置一个参数</code>，通过这个参数来<code>判断具体创建什么产品对象</code>；由于只有一个方法，在<code>返回类型</code>上就不能是具体的某个产品类型了，只能是所有的产品对象都继承或则实现这么一个类型，比如让所有的产品都实现某个<code>接口</code>，或则干脆使用Object类</p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * CPU的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">CPUApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，CPU具有运算的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ *Intel的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">IntelCPU</span> <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in Intel CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * AMD的CPU实现
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> AMDCPU <span class="token keyword">implements</span> <span class="token class-name">CPUApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU的针脚数目
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> pins <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU的针脚数目
+	 * @param pins CPU的针脚数目
+	 */</span>
+	<span class="token keyword">public</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token keyword">int</span> pins<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>pins <span class="token operator">=</span> pins<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in AMD CPU,pins=&quot;</span><span class="token operator">+</span>pins<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 主板的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，主板都具有安装CPU的功能
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 微星的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MSIMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span><span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in MSIMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 技嘉的主板
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GAMainboard</span> <span class="token keyword">implements</span> <span class="token class-name">MainboardApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">int</span> cpuHoles <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 构造方法，传入CPU插槽的孔数
+	 * @param cpuHoles CPU插槽的孔数
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token keyword">int</span> cpuHoles<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpuHoles <span class="token operator">=</span> cpuHoles<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in GAMainboard,cpuHoles=&quot;</span><span class="token operator">+</span>cpuHoles<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 内存的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">MemoryApi</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，内存具有缓存数据的能力
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cacheData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 现代内存的类
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HyMemory</span> <span class="token keyword">implements</span> <span class="token class-name">MemoryApi</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">cacheData</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;现在正在使用现代内存&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 可扩展的抽象工厂的接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">AbstractFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 一个通用的创建产品对象的方法，为了简单，直接返回Object
+	 * 也可以为所有被创建的产品定义一个公共的接口
+	 * @param type 具体创建的产品类型标识
+	 * @return 创建出的产品对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机方案一：Intel 的CPU + 技嘉的主板
+ * 这里创建CPU和主板对象的时候，是对应的，能匹配上的
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Schema1</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Object</span> retObj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token comment">//type为1表示创建CPU，type为2表示创建主板</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> retObj<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机方案二：AMD的CPU + 微星的主板
+ * 这里创建CPU和主板对象的时候，是对应的，能匹配上的
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Schema2</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Object</span> retObj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token comment">//type为1表示创建CPU，type为2表示创建主板</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">AMDCPU</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">MSIMainboard</span><span class="token punctuation">(</span><span class="token number">939</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> retObj<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机方案三：Intel 的CPU + 技嘉的主板 + 现代的内存
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Schema3</span> <span class="token keyword">implements</span> <span class="token class-name">AbstractFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">Object</span> retObj <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+		<span class="token comment">//type为1表示创建CPU，type为2表示创建主板，type为3表示创建内存</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">IntelCPU</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GAMainboard</span><span class="token punctuation">(</span><span class="token number">1156</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token comment">//创建新添加的产品</span>
+		<span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span>type<span class="token operator">==</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			retObj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HyMemory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+		<span class="token keyword">return</span> retObj<span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 装机工程师的类
+ */</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span> <span class="token class-name">ComputerEngineer</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的CPU
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">CPUApi</span> cpu<span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的主板
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">MainboardApi</span> mainboard <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 定义组装机器需要的内存
+	 */</span>
+	<span class="token keyword">private</span> <span class="token class-name">MemoryApi</span> memory <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+	<span class="token comment">/**
+	 * 装机过程
+	 * @param schema 客户选择的装机方案
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">makeComputer</span><span class="token punctuation">(</span><span class="token class-name">AbstractFactory</span> schema<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//1：首先准备好装机所需要的配件</span>
+		<span class="token function">prepareHardwares</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//2：组装机器</span>
+
+		<span class="token comment">//3：测试机器</span>
+
+		<span class="token comment">//4：交付客户</span>
+	<span class="token punctuation">}</span>
+	<span class="token comment">/**
+	 * 准备装机所需要的配件
+	 * @param schema 客户选择的装机方案
+	 */</span>
+	<span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">prepareHardwares</span><span class="token punctuation">(</span><span class="token class-name">AbstractFactory</span> schema<span class="token punctuation">)</span><span class="token punctuation">{</span>
+		<span class="token comment">//这里要去准备CPU和主板的具体实现，为了示例简单，这里只准备这两个</span>
+		<span class="token comment">//可是，装机工程师并不知道如何去创建，怎么办呢？</span>
+
+		<span class="token comment">//使用抽象工厂来获取相应的接口对象</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">CPUApi</span><span class="token punctuation">)</span>schema<span class="token punctuation">.</span><span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">MainboardApi</span><span class="token punctuation">)</span>schema<span class="token punctuation">.</span><span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>memory <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">MemoryApi</span><span class="token punctuation">)</span>schema<span class="token punctuation">.</span><span class="token function">createProduct</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+		<span class="token comment">//测试一下配件是否好用</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>cpu<span class="token punctuation">.</span><span class="token function">calculate</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">this</span><span class="token punctuation">.</span>mainboard<span class="token punctuation">.</span><span class="token function">installCPU</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token keyword">if</span><span class="token punctuation">(</span>memory<span class="token operator">!=</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+			<span class="token keyword">this</span><span class="token punctuation">.</span>memory<span class="token punctuation">.</span><span class="token function">cacheData</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token punctuation">}</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//创建装机工程师对象</span>
+		<span class="token class-name">ComputerEngineer</span> engineer <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ComputerEngineer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//客户选择并创建需要使用的装机方案对象</span>
+		<span class="token class-name">AbstractFactory</span> schema <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Schema3</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//告诉装机工程师自己选择的装机方案，让装机工程师组装电脑</span>
+		engineer<span class="token punctuation">.</span><span class="token function">makeComputer</span><span class="token punctuation">(</span>schema<span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br><span class="line-number">91</span><br><span class="line-number">92</span><br><span class="line-number">93</span><br><span class="line-number">94</span><br><span class="line-number">95</span><br><span class="line-number">96</span><br><span class="line-number">97</span><br><span class="line-number">98</span><br><span class="line-number">99</span><br><span class="line-number">100</span><br><span class="line-number">101</span><br><span class="line-number">102</span><br><span class="line-number">103</span><br><span class="line-number">104</span><br><span class="line-number">105</span><br><span class="line-number">106</span><br><span class="line-number">107</span><br><span class="line-number">108</span><br><span class="line-number">109</span><br><span class="line-number">110</span><br><span class="line-number">111</span><br><span class="line-number">112</span><br><span class="line-number">113</span><br><span class="line-number">114</span><br><span class="line-number">115</span><br><span class="line-number">116</span><br><span class="line-number">117</span><br><span class="line-number">118</span><br><span class="line-number">119</span><br><span class="line-number">120</span><br><span class="line-number">121</span><br><span class="line-number">122</span><br><span class="line-number">123</span><br><span class="line-number">124</span><br><span class="line-number">125</span><br><span class="line-number">126</span><br><span class="line-number">127</span><br><span class="line-number">128</span><br><span class="line-number">129</span><br><span class="line-number">130</span><br><span class="line-number">131</span><br><span class="line-number">132</span><br><span class="line-number">133</span><br><span class="line-number">134</span><br><span class="line-number">135</span><br><span class="line-number">136</span><br><span class="line-number">137</span><br><span class="line-number">138</span><br><span class="line-number">139</span><br><span class="line-number">140</span><br><span class="line-number">141</span><br><span class="line-number">142</span><br><span class="line-number">143</span><br><span class="line-number">144</span><br><span class="line-number">145</span><br><span class="line-number">146</span><br><span class="line-number">147</span><br><span class="line-number">148</span><br><span class="line-number">149</span><br><span class="line-number">150</span><br><span class="line-number">151</span><br><span class="line-number">152</span><br><span class="line-number">153</span><br><span class="line-number">154</span><br><span class="line-number">155</span><br><span class="line-number">156</span><br><span class="line-number">157</span><br><span class="line-number">158</span><br><span class="line-number">159</span><br><span class="line-number">160</span><br><span class="line-number">161</span><br><span class="line-number">162</span><br><span class="line-number">163</span><br><span class="line-number">164</span><br><span class="line-number">165</span><br><span class="line-number">166</span><br><span class="line-number">167</span><br><span class="line-number">168</span><br><span class="line-number">169</span><br><span class="line-number">170</span><br><span class="line-number">171</span><br><span class="line-number">172</span><br><span class="line-number">173</span><br><span class="line-number">174</span><br><span class="line-number">175</span><br><span class="line-number">176</span><br><span class="line-number">177</span><br><span class="line-number">178</span><br><span class="line-number">179</span><br><span class="line-number">180</span><br><span class="line-number">181</span><br><span class="line-number">182</span><br><span class="line-number">183</span><br><span class="line-number">184</span><br><span class="line-number">185</span><br><span class="line-number">186</span><br><span class="line-number">187</span><br><span class="line-number">188</span><br><span class="line-number">189</span><br><span class="line-number">190</span><br><span class="line-number">191</span><br><span class="line-number">192</span><br><span class="line-number">193</span><br><span class="line-number">194</span><br><span class="line-number">195</span><br><span class="line-number">196</span><br><span class="line-number">197</span><br><span class="line-number">198</span><br><span class="line-number">199</span><br><span class="line-number">200</span><br><span class="line-number">201</span><br><span class="line-number">202</span><br><span class="line-number">203</span><br><span class="line-number">204</span><br><span class="line-number">205</span><br><span class="line-number">206</span><br><span class="line-number">207</span><br><span class="line-number">208</span><br><span class="line-number">209</span><br><span class="line-number">210</span><br><span class="line-number">211</span><br><span class="line-number">212</span><br><span class="line-number">213</span><br><span class="line-number">214</span><br><span class="line-number">215</span><br><span class="line-number">216</span><br><span class="line-number">217</span><br><span class="line-number">218</span><br><span class="line-number">219</span><br><span class="line-number">220</span><br><span class="line-number">221</span><br><span class="line-number">222</span><br><span class="line-number">223</span><br><span class="line-number">224</span><br><span class="line-number">225</span><br><span class="line-number">226</span><br><span class="line-number">227</span><br><span class="line-number">228</span><br><span class="line-number">229</span><br><span class="line-number">230</span><br><span class="line-number">231</span><br><span class="line-number">232</span><br><span class="line-number">233</span><br><span class="line-number">234</span><br><span class="line-number">235</span><br><span class="line-number">236</span><br><span class="line-number">237</span><br><span class="line-number">238</span><br></div></div><p>工程师使用该工厂的时候<code>不太安全</code>，因为涉及到强制类型转换。</p> <p><strong>扩展：</strong> 在产品簇里面添加判断方法。(没看想明白，在Schema中怎么判断返回？所以说是不安全的？ )</p> <h3 id="抽象工厂和dao"><a href="#抽象工厂和dao" class="header-anchor">#</a> 抽象工厂和DAO</h3> <p>知识回顾</p> <ol><li><p>DAO：数据访问对象，是 Data Access Object 首字母的简写</p></li> <li><p>DAO 是 JEE（也称为 JavaEE ，原 J2EE ） 中的一个标准模式，通过它来解决访问数据对象所面临的问题，</p> <p>比如：数据源不同、存储类型的不同、访问方式不同、供应商不同、版本不同等等，这些不同会造成访问数据的实现上差别很大。</p></li> <li><p>Dao 需要抽象和封装所有对数据的访问，Dao 承担和数据仓库的交互职责，这也意味着，访问数据所面临的所有问题，都需要 DAO 在内部来自行解决。</p></li> <li><p>使用 Dao 的系统结构图</p></li></ol> <p><img src="/note-book/assets/img/4.7b9e44c4.jpg" alt=""></p> <h3 id="dao-和抽象工厂的关系"><a href="#dao-和抽象工厂的关系" class="header-anchor">#</a> DAO 和抽象工厂的关系</h3> <p>在实现 DAO 模式的时候，一般场景的实现策略就是使用工厂的策略，而且多是通过抽象工厂模式来实现，当然在使用抽象工厂模式来实现的时候，可以结合工厂方法模式。因此 DAO 模式和抽象工厂模式有很大的联系</p> <h3 id="dao模式采用工厂方法模式来实现的策略"><a href="#dao模式采用工厂方法模式来实现的策略" class="header-anchor">#</a> DAO模式采用工厂方法模式来实现的策略</h3> <p><img src="/note-book/assets/img/5.43d9f6bd.jpg" alt=""></p> <h3 id="dao-模式采用抽象工厂模式来实现的策略"><a href="#dao-模式采用抽象工厂模式来实现的策略" class="header-anchor">#</a> DAO 模式采用抽象工厂模式来实现的策略</h3> <p><img src="/note-book/assets/img/6.3264cc39.jpg" alt=""></p> <div class="language-java line-numbers-mode"><pre class="language-java"><code><span class="token comment">/**
+ * 订单主记录对应的DAO操作接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderMainDAO</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，保存订单主记录
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderMain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RdbMainDAOImpl</span> <span class="token keyword">implements</span> <span class="token class-name">OrderMainDAO</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderMain</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in RdbMainDAOImpl saveOrderMain&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XmlMainDAOImpl</span> <span class="token keyword">implements</span> <span class="token class-name">OrderMainDAO</span><span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderMain</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in XmlMainDAOImpl saveOrderMain&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 订单子记录对应的DAO操作接口
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">OrderDetailDAO</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 示意方法，保存订单子记录
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderDetail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XmlDetailDAOImpl</span> <span class="token keyword">implements</span> <span class="token class-name">OrderDetailDAO</span><span class="token punctuation">{</span>
+
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderDetail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in XmlDAOImpl2 saveOrderDetail&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+
+<span class="token punctuation">}</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RdbDetailDAOImpl</span> <span class="token keyword">implements</span> <span class="token class-name">OrderDetailDAO</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">saveOrderDetail</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">&quot;now in RdbDetailDAOImpl saveOrderDetail&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token comment">/**
+ * 抽象工厂，创建订单主、子记录对应的DAO对象
+ */</span>
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">DAOFactory</span> <span class="token punctuation">{</span>
+	<span class="token comment">/**
+	 * 创建订单主记录对应的DAO对象
+	 * @return 订单主记录对应的DAO对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">OrderMainDAO</span> <span class="token function">createOrderMainDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token comment">/**
+	 * 创建订单子记录对应的DAO对象
+	 * @return 订单子记录对应的DAO对象
+	 */</span>
+	<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token class-name">OrderDetailDAO</span> <span class="token function">createOrderDetailDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RdbDAOFactory</span> <span class="token keyword">extends</span> <span class="token class-name">DAOFactory</span><span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">OrderDetailDAO</span> <span class="token function">createOrderDetailDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RdbDetailDAOImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">OrderMainDAO</span> <span class="token function">createOrderMainDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">RdbMainDAOImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">XmlDAOFactory</span> <span class="token keyword">extends</span> <span class="token class-name">DAOFactory</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token class-name">OrderDetailDAO</span> <span class="token function">createOrderDetailDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">XmlDetailDAOImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+	<span class="token keyword">public</span> <span class="token class-name">OrderMainDAO</span> <span class="token function">createOrderMainDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">XmlMainDAOImpl</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BusinessObject</span> <span class="token punctuation">{</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+		<span class="token comment">//创建DAO的抽象工厂</span>
+		<span class="token class-name">DAOFactory</span> df <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RdbDAOFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//通过抽象工厂来获取需要的DAO接口</span>
+		<span class="token class-name">OrderMainDAO</span> mainDAO <span class="token operator">=</span> df<span class="token punctuation">.</span><span class="token function">createOrderMainDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token class-name">OrderDetailDAO</span> detailDAO <span class="token operator">=</span> df<span class="token punctuation">.</span><span class="token function">createOrderDetailDAO</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		<span class="token comment">//调用DAO来完成数据存储的功能</span>
+		mainDAO<span class="token punctuation">.</span><span class="token function">saveOrderMain</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+		detailDAO<span class="token punctuation">.</span><span class="token function">saveOrderDetail</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br><span class="line-number">31</span><br><span class="line-number">32</span><br><span class="line-number">33</span><br><span class="line-number">34</span><br><span class="line-number">35</span><br><span class="line-number">36</span><br><span class="line-number">37</span><br><span class="line-number">38</span><br><span class="line-number">39</span><br><span class="line-number">40</span><br><span class="line-number">41</span><br><span class="line-number">42</span><br><span class="line-number">43</span><br><span class="line-number">44</span><br><span class="line-number">45</span><br><span class="line-number">46</span><br><span class="line-number">47</span><br><span class="line-number">48</span><br><span class="line-number">49</span><br><span class="line-number">50</span><br><span class="line-number">51</span><br><span class="line-number">52</span><br><span class="line-number">53</span><br><span class="line-number">54</span><br><span class="line-number">55</span><br><span class="line-number">56</span><br><span class="line-number">57</span><br><span class="line-number">58</span><br><span class="line-number">59</span><br><span class="line-number">60</span><br><span class="line-number">61</span><br><span class="line-number">62</span><br><span class="line-number">63</span><br><span class="line-number">64</span><br><span class="line-number">65</span><br><span class="line-number">66</span><br><span class="line-number">67</span><br><span class="line-number">68</span><br><span class="line-number">69</span><br><span class="line-number">70</span><br><span class="line-number">71</span><br><span class="line-number">72</span><br><span class="line-number">73</span><br><span class="line-number">74</span><br><span class="line-number">75</span><br><span class="line-number">76</span><br><span class="line-number">77</span><br><span class="line-number">78</span><br><span class="line-number">79</span><br><span class="line-number">80</span><br><span class="line-number">81</span><br><span class="line-number">82</span><br><span class="line-number">83</span><br><span class="line-number">84</span><br><span class="line-number">85</span><br><span class="line-number">86</span><br><span class="line-number">87</span><br><span class="line-number">88</span><br><span class="line-number">89</span><br><span class="line-number">90</span><br></div></div><p><strong>工厂方法的策略</strong>：因为只有一种实现方式，所以比较方便，</p> <p><strong>抽象工厂模式</strong>：有多种数据存储方式。使用该策略来把一系列相关的对象返回</p> <h3 id="抽象工厂模式的优缺点"><a href="#抽象工厂模式的优缺点" class="header-anchor">#</a> 抽象工厂模式的优缺点</h3> <p><strong>优点：</strong></p> <ol><li>分离接口和实现</li> <li>使得切换产品簇变得容易</li></ol> <p><strong>缺点：</strong></p> <ol><li>不太容易扩展新的产品（可扩展工厂来解决，但是有点不太安全）</li> <li>容易造成类层次复杂</li></ol> <hr> <h2 id="理解抽象工厂"><a href="#理解抽象工厂" class="header-anchor">#</a> 理解抽象工厂</h2> <p><strong>抽象工厂模式的本质是：</strong> <code>选择产品簇</code>的实现【简单工厂、工厂方法模式都是选择单个实现】</p> <h3 id="何时选用抽象工厂模式："><a href="#何时选用抽象工厂模式：" class="header-anchor">#</a> 何时选用抽象工厂模式：</h3> <ol><li><p>如果希望一个系统独立于它的产品的创建，组合和表示的时候，换句话说，希望一个系统<code>只是知道产品的接口，而不关心实现</code>的时候</p></li> <li><p>如果一个系统要由多个产品系列中的一个来配置的时候，换句话说，就是可以<code>动态的切换产品簇</code>的时候</p></li> <li><p>如果要<code>强调一系列相关产品</code>的接口，以便<code>联合</code>使用他们的时候</p></li></ol></div> <footer class="page-edit"><div class="edit-link"><a href="https://github.com/zq99299/note-book/edit/master/docs/design_pattern/08_abstract_factory/abstract_factory.md" target="_blank" rel="noopener noreferrer">帮助我们改善此页面！</a> <svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg></div> <div class="last-updated"><span class="prefix">上次更新: :</span> <span class="time">9/4/2018, 10:55:59 PM</span></div></footer> <div class="page-nav"><p class="inner"><span class="prev">
+      ←
+      <a href="/note-book/design_pattern/07_factory_method/factory_method.html" class="prev">
+        工厂方法模式
+      </a></span> <span class="next"><a href="/note-book/design_pattern/09_builder/builder.html">
+        生成器模式
+      </a>
+      →
+    </span></p></div> </main></div><div class="global-ui"><!----><!----></div></div>
+    <script src="/note-book/assets/js/app.a9634737.js" defer></script><script src="/note-book/assets/js/2.378c0760.js" defer></script><script src="/note-book/assets/js/8.caa20992.js" defer></script><script src="/note-book/assets/js/38.a47a679c.js" defer></script>
+  </body>
+</html>
